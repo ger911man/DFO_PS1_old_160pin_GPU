@@ -1,0 +1,15 @@
+This code is used to verify that your firmware was successfully flashed to the microcontroller with the correct CPU frequency of 9.6 MHz (correct fuses).
+ You can confirm the firmware is running properly by checking the status LED: it should blink approximately once per second.
+ The status LED must be connected to **Pin 2 (PB3)** of the microcontroller.
+    (PB5) 1|    |8  VCC (5V)
+    (PB3) 2|    |7  PB2 (SCK/SCL/Analog 2)
+    (PB4) 3|    |6  PB1 (MISO/PWM/Analog 1) (INT0)
+      GND 4|    |5  PB0 (MOSI/PWM/SDA/Analog 0)
+
+To run, compile, or flash the LED blinking test code using PlatformIO:
+1. Open the `platformio.ini` file.
+2. Uncomment the line `src_dir = ./src_blinkTest`.
+3. Comment out any other `src_dir ...` lines, as PlatformIO only allows one active source directory at a time.
+
+> [!NOTE]
+> **Verification:** If the fuses are set correctly to **9.6 MHz**, the onboard LED will blink approximately once per second. If it blinks much slower or faster, double-check your fuse settings!

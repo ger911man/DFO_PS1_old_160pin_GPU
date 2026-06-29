@@ -5,6 +5,9 @@
 .pio/
 .pioenvs/
 .piolibdeps/
+
+# Folders
+include/
 lib/
 lib/readme.txt
 
@@ -14,6 +17,9 @@ lib/readme.txt
 .idea/
 cmake-build-*/
 CMakeListsPrivate.txt
+
+# JetBrains Rider / Resharper settings / stores personal IDE preferences
+*.DotSettings
 
 # --- OS temporary files ---
 .DS_Store
