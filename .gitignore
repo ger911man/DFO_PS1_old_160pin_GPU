@@ -1,0 +1,20 @@
+# --- PlatformIO Targets ---
+
+#.pio/  Contains your compiled binaries, object files, and downloaded libraries.
+#      They change every time you build and take up massive space.
+.pio/
+.pioenvs/
+.piolibdeps/
+lib/
+lib/readme.txt
+
+# --- CLion / JetBrains IDEs ---
+#.idea/ & cmake-build-*/ Contain personal CLion settings, local paths, and build configurations.
+#       Sharing these can break the project for someone else.
+.idea/
+cmake-build-*/
+CMakeListsPrivate.txt
+
+# --- OS temporary files ---
+.DS_Store
+Thumbs.db
