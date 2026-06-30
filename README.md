@@ -1,6 +1,8 @@
-# 🎮 PS1 Dual-Frequency Oscillator (DFO) Mod
-### for 160-Pin GPU Revisions (IC203 - Sony CXD8514Q)
-### and 208-Pin GPU Revisions (IC203 - Sony CXD8561*)
+# 🎮 PSX Dual-Frequency Oscillator (DFO) Mod
+## Project Overview
+This project was specifically created to fix a critical hardware conflict encountered when installing both a **DFO (Dual Frequency Oscillator)** and a **PicoStation ODE (Optical Drive Emulator)** on early Sony PlayStation 1 motherboards: **PU-7 and early PU-8 revisions** equipped with the older **160-pin GPU**. 
+While born out of a need to resolve issues on these specific early revisions, this DFO mod approach is fully applicable to all other revisions of the PS1. In fact, it is **highly recommended** if your goal is to achieve a truly region-free, multi-regional console with perfect video sync and color encoding across both PAL and NTSC regions.
+
 ---
 # ❓ Why is a DFO Mod Needed?
 The original PlayStation console was designed to run at different speeds depending on the region it was sold in:
@@ -13,7 +15,7 @@ However, because the motherboard only has **one single crystal oscillator fixed 
 **This results in:**
 * 📺 **Black and white video** on many CRT televisions.
 * 🚫 **No signal or "Unsupported Format"** errors on modern LCD/OLED TVs and upscalers (like the RetroTINK or OSSC).
-* 🎛️ **Audio desync** and minor gameplay stuttering because the hardware clock doesn't match the game's intended speed.
+* 🎵 **Audio desync** and minor gameplay stuttering because the hardware clock doesn't match the game's intended speed.
 ---
 ### The Solution: Dual-Frequency Oscillator
 A **DFO mod** solves this permanently at the hardware level. 
@@ -22,37 +24,6 @@ It acts as a smart, dynamic clock generator. By monitoring the console's video m
 * Running a **PAL game**? The DFO instantly switches to a perfect **53.222MHz** signal.
 
 With a DFO installed, your console outputs a **100% video-standard accurate signal** for both regions, giving you perfect color, frame rates, and compatibility with modern displays!
-
----
-
-# 🛠️ 🎮 Supported Motherboards & Models 
-
-| PS1 Model | Mainboard Revision | RGB Video Encoder Chip | Notes / DFO Context |
-| :--- | :--- | :--- | :--- |
-| **SCPH-1000** | PU-7 | **Sony CXA1645M** (IC501) | 🔴 $\color{red}{\textsf{Hard DFO Required}}$ for composite/S-Video cross-region color. |
-| **SCPH-1001 / 1002** | PU-8 (Early) | **Sony CXA1645M** (IC501) | 🔴 $\color{red}{\textsf{Hard DFO Required}}$ for composite color. |
-| **SCPH-3000 / 3500 / 5000** | PU-8 (Late) | **Sony CXA1645M** (IC501) | 🔴 $\color{red}{\textsf{Hard DFO Required}}$ for composite color. |
-| **SCPH-5500 / 5501 / 5502** | PU-18 | **Sony CXA1645M** (IC501) | 🔴 $\color{red}{\textsf{Hard DFO Required}}$ for composite/S-Video color. |
-| **SCPH-7000 / 7001 / 7002** | PU-20 | **Sony S_RGB** (CXA2106R) | 🟢 $\color{green}{\textsf{DFO optional.}}$ Decoupled subcarrier clock (outputs PAL60 color fine without a DFO). |
-| **SCPH-7500 / 7501 / 7502** | PU-22 | **Sony S_RGB** (CXA2106R) | 🟢 $\color{green}{\textsf{DFO optional.}}$ Decoupled subcarrier clock. DFO only needed for perfect sync on upscalers. |
-| **SCPH-9000 / 9001 / 9002** | PU-23 | **Sony S_RGB** or **Rohm BH7236F** | 🟢 $\color{green}{\textsf{DFO optional.}}$ Decoupled subcarrier clock. |
-| **SCPH-100 / 101 / 102** | PM-41 / PM-41 (2) | **Sony S_RGB** or **Rohm BH7240AKV** | 🟢 $\color{green}{\textsf{DFO optional.}}$ Decoupled subcarrier clock. |
-
-
-### Why Do Only Some Models Require a Hard DFO Mod?
-
-The distinction between a mandatory modification and an optional one comes down to how Sony engineered the video encoding circuit across different motherboard generations:
-
-* **The Problem (PU-7, PU-8, PU-18):** 
-  Because these early revisions utilize the **CXA1645M** (designated as **IC501**), they tie the color subcarrier frequency directly to the GPU's fixed master clock.
- When you boot an out-of-region game on these stock boards, the GPU successfully changes its display mode (e.g., from PAL to NTSC),
- but the master clock remains wrong for that new mode. The CXA1645M cannot generate the correct color frequency from that mismatched clock signal.
- This is exactly why these specific revisions yield a **Black & White** display over standard AV cables unless you feed them the correct frequency via a DFO mod.
-
-* **The Solution (PU-20 and Later):** 
-  Starting with the **PU-20** motherboard (`SCPH-700x` series), Sony replaced the CXA1645M with a newer video encoder layout, such as the integrated proprietary **S_RGB** chip or later A-Video chip setups.
- These later revisions decoupled the color subcarrier from the main master clock entirely. This architectural shift allows them to cleanly output a hybrid "PAL60" color signal,
- completely bypassing the need for a DFO mod just to see color.
 
 ---
 
@@ -82,6 +53,28 @@ Starting with the PU-20 motherboard (SCPH-700x series), Sony replaced the CXA164
 > If you ever play on a vintage CRT monitor or television, many models (especially older European PAL TVs) cannot properly process a hybrid "PAL60" or non-standard NTSC signal.
 > Without a DFO to normalize the master clock, you may encounter rolling screens, vertical sync collapse, or a complete loss of color on analog tubes.
 
+---
+
+# 🛠️ 🎮 Supported Motherboards & Models 
+
+| PS1 Model | Mainboard Revision | RGB Video Encoder Chip | Notes / DFO Context |
+| :--- | :--- | :--- | :--- |
+| **SCPH-1000** | PU-7 | **Sony CXA1645M** (IC501) | 🔴 DFO is recommended for correct composite/S-Video cross-region color. |
+| **SCPH-1001 / 1002** | PU-8 (Early) | **Sony CXA1645M** (IC501) | 🔴 DFO is recommended.  -\\- |
+| **SCPH-3000 / 3500 / 5000** | PU-8 (Late) | **Sony CXA1645M** (IC501) | 🔴 DFO is recommended.  -\\- |
+| **SCPH-5500 / 5501 / 5502** | PU-18 | **Sony CXA1645M** (IC501) | 🔴 DFO is recommended.  -\\- |
+| **SCPH-7000 / 7001 / 7002** | PU-20 | **Sony S_RGB** (CXA2106R) | 🟢 The DFO is optional (with a decoupled subcarrier clock, it outputs PAL60 color fine without a DFO), but skipping it may result in the issues listed above. |
+| **SCPH-7500 / 7501 / 7502** | PU-22 | **Sony S_RGB** (CXA2106R) | 🟢 The DFO is optional. -\\- |
+| **SCPH-9000 / 9001 / 9002** | PU-23 | **Sony S_RGB** or **Rohm BH7236F** | 🟢 The DFO is optional. -\\- |
+| **SCPH-100 / 101 / 102** | PM-41 / PM-41 (2) | **Sony S_RGB** or **Rohm BH7240AKV** | 🟢 The DFO is optional. -\\- |
+
+---
+
+## 🛠️ Required Hardware
+
+* **Si5351** is an I2C-configurable clock generator.
+* **ATtiny13A:** AVR microcontroller, preferably in a SOIC package for compact "dead-bug soldering."
+* **AVR Programmer:** Required to flash the firmware to the ATtiny13A microcontroller. There are many programmers available, but it is best to use something common and affordable. Highly recommended options include an **Arduino configured as an ISP** or a dedicated **USBasp / USBISP AVR programmer**.
 
 ---
 ---
@@ -99,13 +92,6 @@ Starting with the PU-20 motherboard (SCPH-700x series), Sony replaced the CXA164
 
 
 
-
-This repository contains the firmware and documentation for installing a dual-frequency oscillator (DFO) mod on older revisions of the Sony PlayStation 1 / PSX. 
-
-This specific modification targets consoles equipped with the older **160-pin GPU (IC203 / Sony CXD8514Q)**.
-## 🛠️ Supported Motherboards & Models
-
-The 160-pin Sony GPU is found exclusively on **PU-7** and early **PU-8** motherboard revisions. You can typically find these boards inside the following early console models:
 
 * 🇯🇵 **SCPH-1000**
 * 🌍 **SCPH-3000**
