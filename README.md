@@ -70,11 +70,19 @@ Starting with the PU-20 motherboard (SCPH-700x series), Sony replaced the CXA164
 
 ---
 
-## 🛠️ Required Hardware
+# 🛠️ Required Hardware
 
-* **Si5351** is an I2C-configurable clock generator.
-* **ATtiny13A:** AVR microcontroller, preferably in a SOIC package for compact "dead-bug soldering."
-* **AVR Programmer:** Required to flash the firmware to the ATtiny13A microcontroller. There are many programmers available, but it is best to use something common and affordable. Highly recommended options include an **Arduino configured as an ISP** or a dedicated **USBasp / USBISP AVR programmer**.
+* **Si5351:** An I2C-configurable clock generator.
+* **ATtiny13A:** An AVR microcontroller, preferably in a SOIC package for compact "dead-bug" soldering.
+* **220Ω resistor:** An SMD version is preferred to keep the setup compact.
+* **AVR Programmer:** Required to flash the firmware onto the ATtiny13A. For a budget setup, use an **Arduino configured as an ISP** or a **USBasp**.
+* **Soldering tools & accessories:** fine-tip soldering iron, solder, flux, and thin wrapping wire.
+
+---
+  
+# Setup example early PU-8 
+![Project Screenshot](/images/diagram_DFO_PU-8_early.jpg)
+
 
 ---
 ---
